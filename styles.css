@@ -1,0 +1,107 @@
+:root {
+    --digit-bg: #222;
+    --digit-color: #fff;
+    --digit-size: 100px;
+    --digit-height: 120px;
+    --digit-width: 80px;
+    --gap-size: 12px;
+    --colon-color: #444;
+    --box-opacity: 1;
+    --clock-font: 'Helvetica Neue', Arial, sans-serif;
+    /* default */
+}
+
+body {
+    background-color: #000;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: var(--clock-font);
+    color: #fff;
+    overflow: hidden;
+    transition: background-image 0.5s ease;
+}
+
+#bg-upload {
+    display: none;
+}
+
+.flip-clock-container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.ampm-indicator {
+    font-weight: bold;
+    margin-right: 15px;
+    padding-top: 10px;
+    letter-spacing: 1px;
+    color: var(--digit-color);
+}
+
+.flip-clock {
+    display: flex;
+    align-items: center;
+}
+
+.time-part {
+    display: flex;
+    gap: 2px;
+}
+
+.time-part.minute,
+.time-part.second {
+    margin-left: var(--gap-size);
+}
+
+.time-part.minute::before,
+.time-part.second::before {
+    content: ':';
+    font-size: var(--digit-size);
+    line-height: var(--digit-height);
+    margin-left: calc(var(--gap-size) / -2);
+    margin-right: calc(var(--gap-size) / 2);
+    color: var(--colon-color);
+    font-weight: normal;
+}
+
+.digit-box {
+    width: var(--digit-width);
+    height: var(--digit-height);
+    background-color: rgba(34, 34, 34, var(--box-opacity));
+    border-radius: 5px;
+    font-size: var(--digit-size);
+    line-height: var(--digit-height);
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    color: var(--digit-color);
+}
+
+.digit-box.hidden-bg {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.date-display {
+    margin-top: 30px;
+    letter-spacing: 6px;
+    font-weight: normal;
+    color: var(--digit-color);
+}
+
+/* keep responsive behavior for smaller screens */
+@media (max-width:600px) {
+    :root {
+        --digit-size: 60px;
+        --digit-height: 72px;
+        --digit-width: 48px;
+    }
+}
